@@ -1,7 +1,11 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
+from dotenv import load_dotenv
+import os
 
-engine = create_engine('mysql+mysqlconnector://bumi:acumalaka@47.254.123.28/tb_plsql')
+load_dotenv()  # take environment variables from .env.  
+
+engine = create_engine(os.getenv('DATABASE_URL'))
 
 # Buat session
 Session = sessionmaker(bind=engine)
